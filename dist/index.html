@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Cinematic Hangman - Global Movie Guessing Platform</title>
+    <meta name="description" content="Play the ultimate movie guessing game with friends worldwide. Multiple game modes, daily challenges, and global leaderboards.">
+    <meta name="keywords" content="movie game, hangman, multiplayer, bollywood, hollywood, cinema, guessing game">
+    <meta name="author" content="Cinematic Hangman">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-TileColor" content="#0f172a">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Cinematic Hangman">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Preload Service Worker -->
+    <link rel="preload" href="/sw.js" as="script">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Cinematic Hangman - Global Movie Guessing Platform">
+    <meta property="og:description" content="Play the ultimate movie guessing game with friends worldwide. Multiple game modes, daily challenges, and global leaderboards.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:image" content="/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Cinematic Hangman">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cinematic Hangman - Global Movie Guessing Platform">
+    <meta name="twitter:description" content="Play the ultimate movie guessing game with friends worldwide. Multiple game modes, daily challenges, and global leaderboards.">
+    <meta name="twitter:image" content="/icon-512.png">
+    <meta name="twitter:site" content="@cinematichangman">
+    <meta name="twitter:creator" content="@cinematichangman">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://*.cloudfunctions.net;">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Cinematic Hangman",
+      "description": "Global Movie Guessing Platform with multiplayer games, daily challenges, and leaderboards",
+      "url": "https://your-domain.com",
+      "applicationCategory": "Game",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Cinematic Hangman"
+      }
+    }
+    </script>
+  <script type="module" crossorigin src="/assets/index-BVPUwd2X.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-CgENJm5Z.js">
+  <link rel="modulepreload" crossorigin href="/assets/firebase-D7WLjvGs.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-mcU784mW.css">
+<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body>
+    <!-- App Root -->
+    <div id="root"></div>
+    
+    <!-- Loading Fallback -->
+    <noscript>
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); color: white; font-family: Inter, sans-serif; text-align: center; padding: 2rem;">
+            <div>
+                <h1 style="font-size: 2rem; margin-bottom: 1rem;">🎬 Cinematic Hangman</h1>
+                <p style="margin-bottom: 1rem;">JavaScript is required to play this game.</p>
+                <p>Please enable JavaScript in your browser and refresh the page.</p>
+            </div>
+        </div>
+    </noscript>
+    
+    <!-- Main Application Script -->
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- PWA Install Prompt -->
+    <script>
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install button or banner
+            console.log('PWA install prompt available');
+        });
+        
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('PWA was installed');
+        });
+    </script>
+</body>
+</html>
