@@ -87,6 +87,12 @@
     <!-- App Root -->
     <div id="root"></div>
     
+    <!-- Manual Login Buttons (fallback) -->
+    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background: white; padding: 20px; border: 1px solid black;" id="manual-login">
+        <button onclick="guestLogin()">Continue as Guest</button>
+        <button onclick="googleLogin()">Continue with Google</button>
+    </div>
+    
     <!-- Loading Fallback -->
     <noscript>
         <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); color: white; font-family: Inter, sans-serif; text-align: center; padding: 2rem;">
@@ -98,7 +104,8 @@
         </div>
     </noscript>
     
-    <!-- Main Application Script -->
+    <!-- Main Application Script -->
+
     
     <!-- Service Worker Registration -->
     <script>
@@ -129,5 +136,49 @@
             console.log('PWA was installed');
         });
     </script>
+
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import {
+    getAuth,
+    signInAnonymously,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+ const firebaseConfig = {
+    apiKey: "AIzaSyA6olHJFfACLc2Cpu8dOyAcdlokCebZSIo",
+    authDomain: "cinematic-hangman-4ce86.firebaseapp.com",
+    projectId: "cinematic-hangman-4ce86",
+    storageBucket: "cinematic-hangman-4ce86.firebasestorage.app",
+    messagingSenderId: "132033026137",
+    appId: "1:132033026137:web:6b252b8cb99b6e0b1bf948"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Guest Login
+  window.guestLogin = async () => {
+    const result = await signInAnonymously(auth);
+    alert("Guest Login Successful");
+    console.log(result.user);
+  };
+
+  // Google Login
+  window.googleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    alert("Google Login Successful");
+    console.log(result.user);
+  };
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) console.log("Logged in:", user.uid);
+  });
+</script>
+
+
 </body>
 </html>
